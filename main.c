@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 19:23:06 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/11 11:36:21 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/11 12:46:18 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,20 @@ int	run_isdigit(char **temp)
 	while (temp[i])
 	{
 		j = 0;
+		if(temp[i][j] == '-' || temp[i][j] == '+')
+		{
+			j++;
+			if (!temp[i][j])
+			{
+				write(2, "Error\n", 6);
+				return (0);
+			}
+		}
 		while (temp[i][j])
 		{
 			if (!ft_isdigit(temp[i][j]))
 			{
-				write(2, "Error, non digit\n", 17);
+				write(2, "Error\n", 7);
 				return (0);
 			}
 			j++;
