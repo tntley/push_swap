@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 19:23:06 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/14 03:04:17 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/14 06:12:39 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,14 @@ int main(int argc, char **argv)
 		current = current->next;
 	}
 	printf("%d, index : %d\n", current->value, current->index);
-	printf("size of stack = %d", sizeofstack(a));
+	printf("size of stack = %d\n", sizeofstack(a));
+	printf("disorder : %f\n", compute_disorder(a));
+	/*rotate(&a);
+	printf("new head value is : %d\n", a->value);
+	printf("value of last node after rotation : %d\n", a->prev->value);*/
+	sa(&a);
+	printf("value of new first node : %d\n", a->value);
+	printf("value of new second node : %d\n", a->next->value);
 	return (0);
 }
 
@@ -165,13 +172,13 @@ void	define_indexes(t_list_stack *a)
 {
 	int				i;
 	int				j;
-	t_list_stack	*current;
+	t_list_stack	*fix;
 	t_list_stack	*compareto;
 	int				inferior;
 	int				stacksize;
 
 	stacksize = sizeofstack(a);
-	current = a;
+	fix = a;
 	i = 0;
 	while (i < stacksize)
 	{
@@ -180,13 +187,13 @@ void	define_indexes(t_list_stack *a)
 		compareto = a;
 		while (j < stacksize)
 		{
-			if (compareto->value < current->value)
+			if (compareto->value < fix->value)
 				inferior++;
 			compareto = compareto->next;
 			j++;
 		}
-		current->index = inferior;
-		current = current->next;
+		fix->index = inferior;
+		fix = fix->next;
 		i++;
 	}
 }
@@ -207,4 +214,40 @@ int	sizeofstack(t_list_stack *a)
 	}
 	count++;
 	return (count);
+}
+
+float	compute_disorder(t_list_stack *a)
+{
+	float			mistakes;
+	float			pairs;
+	t_list_stack	*node1;
+	t_list_stack	*node2;
+
+	pairs = 0.0;
+	mistakes = 0.0;
+	if (!a || a->next == a)
+		return (mistakes);
+	node1 = a;
+	while (node1->next != a)
+	{
+		node2 = node1->next;
+		while (node2 != a)
+		{
+			pairs += 1;
+			if (node1->value > node2->value)
+				mistakes += 1;
+			node2 = node2->next;
+		}
+		node1 = node1->next;
+	}
+	return (mistakes / pairs);
+}
+
+void	rotate(t_list_stack **stack)
+{
+	t_list_stack	*head;
+	if (!(*stack) || (*stack)->next == (*stack))
+		return;
+	head = *stack;
+	*stack = head->next;
 }
