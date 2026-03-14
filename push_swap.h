@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 18:23:36 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/11 11:27:55 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/14 02:34:31 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,24 @@
 
 # include "./libft/libft.h"
 # include <stdio.h>
+# include <limits.h>
 
 typedef struct	s_list_stack
 {
-	int					nb;
+	int					value;
 	int					index;
 	struct s_list_stack	*next;
+	struct s_list_stack	*prev;
 }				t_list_stack;
 
-t_list_stack	make_stack(char **temp, t_list_stack **a);
-int				run_isdigit(char **temp);
+int		run_isdigit(char *temp);
+long	ft_atolong(const char *temp);
+int		is_duplicate(t_list_stack *a, int nb);
+void	build_stack(t_list_stack **a, int nb);
+void	define_indexes(t_list_stack *a);
+int		sizeofstack(t_list_stack *a);
+
+
 
 
 # endif
