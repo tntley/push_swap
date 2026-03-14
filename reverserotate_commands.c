@@ -1,41 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_commands.c                                  :+:      :+:    :+:   */
+/*   reverserotate_commands.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/14 05:02:36 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/14 22:27:16 by tanrandr         ###   ########.fr       */
+/*   Created: 2026/03/14 22:19:29 by tanrandr          #+#    #+#             */
+/*   Updated: 2026/03/14 22:24:38 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate(t_list_stack **stack)
+void	reverserotate(t_list_stack **stack)
 {
-	t_list_stack	*head;
 	if (!(*stack) || (*stack)->next == (*stack))
 		return;
-	head = *stack;
-	*stack = head->next;
+	(*stack) = (*stack)->prev;
 }
 
-void	ra(t_list_stack **a)
+void	rra(t_list_stack **a)
 {
-	rotate(a);
-	write(1, "ra\n", 3);
+	reverserotate(a);
+	write(1, "rra\n", 4);
 }
 
-void	rb(t_list_stack **b)
+void	rrb(t_list_stack **b)
 {
-	rotate(b);
-	write(1, "ra\n", 3);
+	reverserotate(b);
+	write(1, "rrb\n", 4);
 }
 
-void	rr(t_list_stack **a, t_list_stack **b)
+void	rrr(t_list_stack **a, t_list_stack **b)
 {
-	rotate(a);
-	rotate(b);
-	write(1, "rr\n", 3);
+	reverserotate(a);
+	reverserotate(b);
+	write(1, "rrr\n", 4);
 }

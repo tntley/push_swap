@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 05:22:15 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/14 06:12:01 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/14 22:18:51 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,20 @@ void	swap(t_list_stack **stack)
 		return;
 	head = *stack;
 	second = head->next;
-	if (second->prev == head)
+	if (second->next == head)
 	{
 		(*stack) = second;
 		return;
 	}
-	(*stack) = second;
+	last = head->prev;
+	third = second->next;
 	last->next = second;
 	second->prev = last;
 	second->next = head;
 	head->prev = second;
 	head->next = third;
 	third->prev = head;
+	(*stack) = second;
 }
 
 void	sa(t_list_stack **a)

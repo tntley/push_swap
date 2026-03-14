@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 18:23:36 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/14 05:46:45 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/14 22:54:03 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,15 @@ void	swap(t_list_stack **stack);
 void	sa(t_list_stack **a);
 void	sb(t_list_stack **b);
 void	ss(t_list_stack **a, t_list_stack **b);
+
+void	reverserotate(t_list_stack **stack);
+void	rra(t_list_stack **a);
+void	rrb(t_list_stack **b);
+void	rrr(t_list_stack **a, t_list_stack **b);
+
+void	push(t_list_stack **src, t_list_stack **dest);
+void	pa(t_list_stack **b, t_list_stack **a);
+void	pb(t_list_stack **a, t_list_stack **b);
 
 
 # endif

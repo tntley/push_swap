@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 19:23:06 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/14 06:12:39 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/14 23:03:00 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int main(int argc, char **argv)
 	}
 	define_indexes(a);
 
-
+	//test from here on out
 	current = a;
 	while (current->next != a)
 	{
@@ -68,10 +68,13 @@ int main(int argc, char **argv)
 	printf("disorder : %f\n", compute_disorder(a));
 	/*rotate(&a);
 	printf("new head value is : %d\n", a->value);
-	printf("value of last node after rotation : %d\n", a->prev->value);*/
-	sa(&a);
+	printf("value of last node after rotation : %d\n", a->prev->value);
+	rra(&a);
 	printf("value of new first node : %d\n", a->value);
-	printf("value of new second node : %d\n", a->next->value);
+	printf("value of new second node : %d\n", a->next->value);*/
+	pb(&a, &b);
+	printf("value of new first node of stack a : %d\n", a->value);
+	printf("value of new first node of stack b : %d\n", b->value);
 	return (0);
 }
 
@@ -243,11 +246,3 @@ float	compute_disorder(t_list_stack *a)
 	return (mistakes / pairs);
 }
 
-void	rotate(t_list_stack **stack)
-{
-	t_list_stack	*head;
-	if (!(*stack) || (*stack)->next == (*stack))
-		return;
-	head = *stack;
-	*stack = head->next;
-}
