@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 18:23:36 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/14 22:54:03 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/17 12:12:40 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ void	build_stack(t_list_stack **a, int nb);
 void	define_indexes(t_list_stack *a);
 int		sizeofstack(t_list_stack *a);
 float	compute_disorder(t_list_stack *a);
+char	*ft_strjoinspace(const char *s1, const char *s2);
+int		define_sort_mode(char *flag);
+int		ft_strcmp(const char *s1, const char *s2);
+
 
 void	rotate(t_list_stack **stack);
 void	ra(t_list_stack **a);

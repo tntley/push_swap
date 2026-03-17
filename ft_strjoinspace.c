@@ -6,13 +6,13 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 10:27:23 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/14 22:12:01 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/17 12:02:52 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoinspace(const char *s1, const char *s2)
 {
 	char	*result;
 	int		i;

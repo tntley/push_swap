@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 19:23:06 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/14 23:03:00 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/17 12:19:18 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,20 @@ int main(int argc, char **argv)
 	t_list_stack	*a = NULL;
 	t_list_stack	*b = NULL;
 	long			prestack;
+	int				sortmode;
 	t_list_stack	*current;
 
-	i = 1;
 	joint = "";
-	if (argc == 2)
-		temp = ft_split(argv[1], ' ');
+	if (argc < 2)
+		return (0);
+	sortmode = define_sort_mode(argv[1]);
+	if (sortmode == 0)
+		i = 1;
 	else
-	{
-		while (argv[i] && i < argc)
-			joint = ft_strjoin(joint, argv[i++]);
-		temp = ft_split(joint, ' ');
-	}
+		i = 2;
+	while (argv[i] && i < argc)
+		joint = ft_strjoinspace(joint, argv[i++]);
+	temp = ft_split(joint, ' ');
 	i = 0;
 	while (temp[i])
 	{
@@ -66,12 +68,13 @@ int main(int argc, char **argv)
 	printf("%d, index : %d\n", current->value, current->index);
 	printf("size of stack = %d\n", sizeofstack(a));
 	printf("disorder : %f\n", compute_disorder(a));
-	/*rotate(&a);
+	printf("sort mode number %d\n", sortmode);
+	ra(&a);
 	printf("new head value is : %d\n", a->value);
 	printf("value of last node after rotation : %d\n", a->prev->value);
 	rra(&a);
 	printf("value of new first node : %d\n", a->value);
-	printf("value of new second node : %d\n", a->next->value);*/
+	printf("value of new second node : %d\n", a->next->value);
 	pb(&a, &b);
 	printf("value of new first node of stack a : %d\n", a->value);
 	printf("value of new first node of stack b : %d\n", b->value);
