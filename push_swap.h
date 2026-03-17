@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 18:23:36 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/17 12:12:40 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/17 12:57:54 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct	s_list_stack
 	struct s_list_stack	*prev;
 }				t_list_stack;
 
+void	manage_input(char **temp, t_list_stack **a);
+void	run_sort(t_list_stack **a, t_list_stack **b, int sortmode);
 int		run_isdigit(char *temp);
 long	ft_atolong(const char *temp);
 int		is_duplicate(t_list_stack *a, int nb);

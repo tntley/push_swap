@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   define_sort_mode.c                                 :+:      :+:    :+:   */
+/*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:14:13 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/17 12:21:16 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/17 13:05:46 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,16 @@ int	ft_strcmp(const char *s1, const char *s2)
 	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
 		i++;
 	return ((unsigned char) s1[i] - (unsigned char) s2[i]);
+}
+
+void	run_sort(t_list_stack **a, t_list_stack **b, int sortmode)
+{
+	if (sortmode = 1)
+		simplesort(a, b);
+	if (sortmode = 2)
+		mediumsort(a, b);
+	if (sortmode = 3)
+		complexsort(a, b);
+	else
+		adaptativesort(a, b);
 }

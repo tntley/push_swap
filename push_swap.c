@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 19:23:06 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/17 12:19:18 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/17 12:40:28 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int main(int argc, char **argv)
 	char			*joint;
 	t_list_stack	*a = NULL;
 	t_list_stack	*b = NULL;
-	long			prestack;
 	int				sortmode;
 	t_list_stack	*current;
 
@@ -34,31 +33,9 @@ int main(int argc, char **argv)
 	while (argv[i] && i < argc)
 		joint = ft_strjoinspace(joint, argv[i++]);
 	temp = ft_split(joint, ' ');
-	i = 0;
-	while (temp[i])
-	{
-		if (!run_isdigit(temp[i]))
-		{
-			write(2, "Error\n", 6);
-			return (0);
-		}
-		prestack = ft_atolong(temp[i]);
-		if (prestack > INT_MAX || prestack < INT_MIN)
-		{
-			write(2, "Error\n", 6);
-			return (0);
-		}
-		if (is_duplicate(a, (int)prestack))
-		{
-			write(2, "Error\n", 6);
-			return (0);
-		}
-		build_stack(&a, (int)prestack);
-		i++;
-	}
-	define_indexes(a);
+	manage_input(temp, &a);
 
-	//test from here on out
+	//FOLLOWING LINES ARE JUST TESTS
 	current = a;
 	while (current->next != a)
 	{
@@ -79,6 +56,36 @@ int main(int argc, char **argv)
 	printf("value of new first node of stack a : %d\n", a->value);
 	printf("value of new first node of stack b : %d\n", b->value);
 	return (0);
+}
+
+void	manage_input(char **temp, t_list_stack **a)
+{
+	long	prestack;
+	int		i;
+
+	i = 0;
+	while (temp[i])
+	{
+		if (!run_isdigit(temp[i]))
+		{
+			write(2, "Error\n", 6);
+			return ;
+		}
+		prestack = ft_atolong(temp[i]);
+		if (prestack > INT_MAX || prestack < INT_MIN)
+		{
+			write(2, "Error\n", 6);
+			return ;
+		}
+		if (is_duplicate(*a, (int)prestack))
+		{
+			write(2, "Error\n", 6);
+			return ;
+		}
+		build_stack(a, (int)prestack);
+		i++;
+	}
+	define_indexes(*a);
 }
 
 int	run_isdigit(char *temp)
