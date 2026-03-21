@@ -6,26 +6,32 @@
 #    By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/11 09:52:37 by tanrandr          #+#    #+#              #
-#    Updated: 2026/03/11 11:35:54 by tanrandr         ###   ########.fr        #
+#    Updated: 2026/03/21 23:53:30 by tanrandr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pushswap.a
-LIBFT = ./libft/libft.a
+NAME = push_swap
+LIBFT_DIR = ./libft
+LIBFT = $(LIBFT_DIR)/libft.a
 CC = gcc
-CFLAGS = -Werror -Wextra -Wall -c
-SRC = make_stack.c
+CFLAGS = -Werror -Wextra -Wall
+SRC = push_swap.c rotate_commands.c parsinginput.c compute_disorder.c adaptativesort.c ft_strjoinspace.c mediumsort.c push_commands.c reverserotate_commands.c simplesort.c sorting.c stackbuilding.c swap_commands.c complexsort.c utilsforsort.c
 OBJ := $(SRC:.c=.o)
 
-all: $(NAME)
+all: $(NAME) $(LIBFT)
 
-$(NAME):
-	make -C ./libft
-	cp $(LIBFT) $@
-	ar rcs $@
+$(LIBFT) :
+	make -C $(LIBFT_DIR)
+
+$(NAME): $(LIBFT) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT_DIR) $(LIBFT) -o $(NAME)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	make clean -C ./libft
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)

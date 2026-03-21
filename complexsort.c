@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   adaptativesort.c                                   :+:      :+:    :+:   */
+/*   complexsort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/17 12:58:10 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/21 23:02:24 by tanrandr         ###   ########.fr       */
+/*   Created: 2026/03/21 23:05:15 by tanrandr          #+#    #+#             */
+/*   Updated: 2026/03/21 23:13:59 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	adaptativesort(t_list_stack **a, t_list_stack **b)
+void	complexsort(t_list_stack **a, t_list_stack **b)
 {
-	float	disorder;
+	int size = sizeofstack(*a);
+	int max_bits = 0;
+	int i = 0;
+	int j;
 
-	disorder = compute_disorder(*a);
-	if (disorder < 0.2)
-		simplesort(a, b);
-	if (disorder >= 0.2 && disorder < 0.5)
-		mediumsort(a, b);
-	if (disorder >= 0.5)
-		complexsort(a, b);
+
+	while (((size - 1) >> max_bits) != 0)
+		max_bits++;
+	while (i < max_bits)
+	{
+		j = 0;
+		while (j < size)
+		{
+			if ((((*a)->index >> i) & 1) == 1)
+				ra(a);
+			else
+				pb(a, b);
+			j++;
+		}
+		while (*b)
+			pa(b, a);
+		i++;
+	}
 }

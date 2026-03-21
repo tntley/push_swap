@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 22:29:15 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/14 23:02:58 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/22 00:26:21 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,16 @@ void	push(t_list_stack **src, t_list_stack **dest)
 	if (!(*src))
 		return;
 	head = *src;
-	second = head->next;
-	lastsrc = head->prev;
-	*src = second;
-	second->prev = lastsrc;
-	lastsrc->next = second;
+	if (head->next == head)
+		*src = NULL;
+	else
+	{
+		second = head->next;
+		lastsrc = head->prev;
+		*src = second;
+		second->prev = lastsrc;
+		lastsrc->next = second;
+	}
 	if (!(*dest))
 	{
 		(*dest) = head;
@@ -37,6 +42,8 @@ void	push(t_list_stack **src, t_list_stack **dest)
 	{
 		lastdest = (*dest)->prev;
 		lastdest->next = head;
+		head->prev = lastdest;
+		head->next = (*dest);
 		(*dest) = head;
 	}
 }

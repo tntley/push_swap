@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:14:13 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/17 13:05:46 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/21 23:53:32 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ int	ft_strcmp(const char *s1, const char *s2)
 
 void	run_sort(t_list_stack **a, t_list_stack **b, int sortmode)
 {
-	if (sortmode = 1)
+	if (sortmode == 1)
 		simplesort(a, b);
-	if (sortmode = 2)
+	if (sortmode == 2)
 		mediumsort(a, b);
-	if (sortmode = 3)
+	if (sortmode == 3)
 		complexsort(a, b);
 	else
 		adaptativesort(a, b);

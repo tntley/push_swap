@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 18:23:36 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/17 12:57:54 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/21 23:17:12 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,19 @@ float	compute_disorder(t_list_stack *a);
 char	*ft_strjoinspace(const char *s1, const char *s2);
 int		define_sort_mode(char *flag);
 int		ft_strcmp(const char *s1, const char *s2);
+
+void	error_and_free(t_list_stack **a);
+void	freestack(t_list_stack **stack);
+
+
+void	simplesort(t_list_stack **a, t_list_stack **b);
+void	mediumsort(t_list_stack **a, t_list_stack **b);
+void	complexsort(t_list_stack **a, t_list_stack **b);
+void	adaptativesort(t_list_stack **a, t_list_stack **b);
+
+int	get_min_index(t_list_stack *stack);
+void	move_to_top(t_list_stack **stack, int target_idx);
+void		sort_three(t_list_stack **a);
 
 
 void	rotate(t_list_stack **stack);
