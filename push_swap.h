@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 18:23:36 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/21 23:17:12 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/22 09:39:25 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		ft_strcmp(const char *s1, const char *s2);
 
 void	error_and_free(t_list_stack **a);
 void	freestack(t_list_stack **stack);
-
+int		ft_sqrt(int nb);
 
 void	simplesort(t_list_stack **a, t_list_stack **b);
 void	mediumsort(t_list_stack **a, t_list_stack **b);

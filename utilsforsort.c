@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 23:19:17 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/21 23:19:56 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/22 10:37:20 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ void	move_to_top(t_list_stack **stack, int target_idx)
 	int size = sizeofstack(*stack);
 
 
-	while (tmp->index != target_idx)
+	while (tmp->index != target_idx && pos < size)
 	{
 		pos++;
 		tmp = tmp->next;
 	}
+	if (pos == size)
+		return ;
 	if (pos <= size / 2)
 		while ((*stack)->index != target_idx) ra(stack);
 	else

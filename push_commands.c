@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 22:29:15 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/22 00:26:21 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/22 10:20:26 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	push(t_list_stack **src, t_list_stack **dest)
 		lastdest->next = head;
 		head->prev = lastdest;
 		head->next = (*dest);
+		(*dest)->prev = head;
 		(*dest) = head;
 	}
 }

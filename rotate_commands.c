@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 05:02:36 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/14 22:27:16 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/22 10:08:54 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ra(t_list_stack **a)
 void	rb(t_list_stack **b)
 {
 	rotate(b);
-	write(1, "ra\n", 3);
+	write(1, "rb\n", 3);
 }
 
 void	rr(t_list_stack **a, t_list_stack **b)

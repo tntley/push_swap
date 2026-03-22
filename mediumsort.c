@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 21:44:16 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/22 00:49:15 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/22 10:12:28 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 void	mediumsort(t_list_stack **a, t_list_stack **b)
 {
 	int	size = sizeofstack(*a);
-	//int chunk_size = (size > 100) ? 35 : 15;
-	int	chunk_size = sqrt(size); /*divide into sqrt n chunks, not default sized chunks*/
+	int	chunk_size = ft_sqrt(size);
 	int	i = 0;
 
 	while (*a)
@@ -38,8 +37,26 @@ void	mediumsort(t_list_stack **a, t_list_stack **b)
 	while (*b)
 	{
 		//int max_idx = sizeofstack(*b) - 1;
-		move_to_top(b, i - 1);
+		move_to_top(b, i);
 		pa(b, a);
 		i--;
+	}
+}
+
+int	ft_sqrt(int nb)
+{
+	int	sq;
+
+	sq = 1;
+	if (nb <= 0)
+		return (0);
+	else
+	{
+		while (sq * sq < nb)
+			sq++;
+		if (sq * sq == nb)
+			return (sq);
+		else
+			return (sq - 1);
 	}
 }

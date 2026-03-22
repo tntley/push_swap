@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:14:13 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/21 23:53:32 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/22 09:34:31 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	define_sort_mode(char *flag)
 	mode = 0;
 	if (ft_strcmp(flag, "--simple") == 0)
 		mode = 1;
-	if (ft_strcmp(flag, "--medium") == 0)
+	else if (ft_strcmp(flag, "--medium") == 0)
 		mode = 2;
-	if (ft_strcmp(flag, "--complex") == 0)
+	else if (ft_strcmp(flag, "--complex") == 0)
 		mode = 3;
-	if (ft_strcmp(flag, "--adaptative") == 0)
+	else if (ft_strcmp(flag, "--adaptative") == 0)
 		mode = -1;
 	return (mode);
 }
@@ -42,9 +42,9 @@ void	run_sort(t_list_stack **a, t_list_stack **b, int sortmode)
 {
 	if (sortmode == 1)
 		simplesort(a, b);
-	if (sortmode == 2)
+	else if (sortmode == 2)
 		mediumsort(a, b);
-	if (sortmode == 3)
+	else if (sortmode == 3)
 		complexsort(a, b);
 	else
 		adaptativesort(a, b);
