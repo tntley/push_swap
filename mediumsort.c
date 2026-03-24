@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 21:44:16 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/22 10:12:28 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/24 17:39:30 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	mediumsort(t_list_stack **a, t_list_stack **b)
 	while (*b)
 	{
 		//int max_idx = sizeofstack(*b) - 1;
-		move_to_top(b, i);
+		move_to_top(b, i - 1);
 		pa(b, a);
 		i--;
 	}

@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 19:23:06 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/22 00:35:13 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/24 19:32:10 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int main(int argc, char **argv)
 		joint = ft_strjoinspace(joint, argv[i++]);
 	temp = ft_split(joint, ' ');
 	manage_input(temp, &a);
+	free_temp(temp);
 
 	//FOLLOWING LINES ARE JUST TESTS
 	current = a;
@@ -45,8 +46,8 @@ int main(int argc, char **argv)
 	printf("%d, index : %d\n", current->value, current->index);
 	printf("size of stack = %d\n", sizeofstack(a));
 	printf("disorder : %f\n", compute_disorder(a));
-	/*printf("sort mode number %d\n", sortmode);
-	ra(&a);
+	printf("sort mode number %d\n", sortmode);
+	/*ra(&a);
 	printf("new head value is : %d\n", a->value);
 	printf("value of last node after rotation : %d\n", a->prev->value);
 	rra(&a);
@@ -65,6 +66,18 @@ int main(int argc, char **argv)
 		current = current->next;
 	}
 	printf("%d\n", current->value);
-	freestack(&a);
 	return (0);
+}
+
+void	free_temp(char **temp)
+{
+	int	i;
+
+	i = 0;
+	while (temp[i])
+	{
+		free(temp[i]);
+		i++;
+	}
+	free(temp);
 }

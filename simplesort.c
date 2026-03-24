@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 21:43:15 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/21 23:22:52 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/24 17:23:38 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@ void simplesort(t_list_stack **a, t_list_stack **b)
 
 int	get_min_index(t_list_stack *stack)
 {
-	int min = stack->index;
-	t_list_stack *tmp = stack->next;
+	int	min ;
+	t_list_stack	*tmp;
+
+	min = stack->index;
+	tmp = stack->next;
 	while (tmp != stack)
 	{
 		if (tmp->index < min)
