@@ -6,7 +6,7 @@
 #    By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/11 09:52:37 by tanrandr          #+#    #+#              #
-#    Updated: 2026/03/24 18:05:53 by tanrandr         ###   ########.fr        #
+#    Updated: 2026/03/25 03:56:17 by tanrandr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 CC = gcc
 CFLAGS = -Werror -Wextra -Wall
-SRC = push_swap.c rotate_commands.c parsinginput.c compute_disorder.c adaptivesort.c ft_strjoinspace.c mediumsort.c push_commands.c reverserotate_commands.c simplesort.c sorting.c stackbuilding.c swap_commands.c complexsort.c utilsforsort.c
+SRC = push_swap.c rotate_commands.c parsinginput.c compute_disorder.c adaptivesort.c ft_strjoinspace.c mediumsort.c push_commands.c reverserotate_commands.c simplesort.c sorting.c stackbuilding.c swap_commands.c complexsort.c utilsforsort.c bench.c bench_push.c bench_reverse_rotate.c bench_rotate.c bench_swap.c
 OBJ := $(SRC:.c=.o)
 
 all: $(NAME) $(LIBFT)

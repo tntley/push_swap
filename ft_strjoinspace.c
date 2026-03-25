@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strjoinspace.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 10:27:23 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/17 12:02:52 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/24 20:27:08 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strjoinspace(const char *s1, const char *s2)
 	int		len;
 
 	len = ft_strlen(s1) + ft_strlen(s2);
-	result = malloc (sizeof(char) * (len + 1));
+	result = malloc (sizeof(char) * (len + 2));
 	if (!result)
 		return (NULL);
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 18:23:36 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/24 18:27:52 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/25 03:58:04 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,27 @@ typedef struct	s_list_stack
 	struct s_list_stack	*prev;
 }				t_list_stack;
 
+typedef struct	s_list_bench
+{
+	float	disorder;
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+}				t_list_bench;
+
+int		check_bench(t_list_bench **metric, char *argv);
+void	define_bench(t_list_bench **metric);
+
 void	manage_input(char **temp, t_list_stack **a);
-void	run_sort(t_list_stack **a, t_list_stack **b, int sortmode);
+void	run_sort(t_list_stack **a, t_list_stack **b, int sortmode, t_list_bench *metric);
 int		run_isdigit(char *temp);
 long	ft_atolong(const char *temp);
 int		is_duplicate(t_list_stack *a, int nb);
@@ -43,15 +62,32 @@ void	freestack(t_list_stack **stack);
 int		ft_sqrt(int nb);
 void	free_temp(char **temp);
 
+void	simplesort(t_list_stack **a, t_list_stack **b, t_list_bench *metric);
+void	mediumsort(t_list_stack **a, t_list_stack **b, t_list_bench *metric);
+void	complexsort(t_list_stack **a, t_list_stack **b, t_list_bench *metric);
+void	adaptivesort(t_list_stack **a, t_list_stack **b, t_list_bench *metric);
 
-void	simplesort(t_list_stack **a, t_list_stack **b);
-void	mediumsort(t_list_stack **a, t_list_stack **b);
-void	complexsort(t_list_stack **a, t_list_stack **b);
-void	adaptivesort(t_list_stack **a, t_list_stack **b);
+int		get_min_index(t_list_stack *stack);
+void	move_to_top(t_list_stack **stack, int target_idx, t_list_bench *metric);
+void	sort_three(t_list_stack **a, t_list_bench *metric);
 
-int	get_min_index(t_list_stack *stack);
-void	move_to_top(t_list_stack **stack, int target_idx);
-void		sort_three(t_list_stack **a);
+void	print_metrics(t_list_bench *metric, int sortmode);
+void	print_disorder(float disorder);
+void	print_mode(int	sortmode, float disorder);
+void	print_total_ops(t_list_bench *metric);
+void	print_ops(t_list_bench *metric);
+
+void	do_ra(t_list_stack **a, t_list_bench *metric);
+void	do_rb(t_list_stack **b, t_list_bench *metric);
+void	do_rr(t_list_stack **a, t_list_stack **b, t_list_bench *metric);
+void	do_sa(t_list_stack **a, t_list_bench *metric);
+void	do_sb(t_list_stack **b, t_list_bench *metric);
+void	do_ss(t_list_stack **a, t_list_stack **b, t_list_bench *metric);
+void	do_pa(t_list_stack **b, t_list_stack **a, t_list_bench *metric);
+void	do_pb(t_list_stack **a, t_list_stack **b, t_list_bench *metric);
+void	do_rra(t_list_stack **a, t_list_bench *metric);
+void	do_rrb(t_list_stack **b, t_list_bench *metric);
+void	do_rrr(t_list_stack **a, t_list_stack **b, t_list_bench *metric);
 
 
 void	rotate(t_list_stack **stack);

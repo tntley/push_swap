@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   complexsort.c                                      :+:      :+:    :+:   */
+/*   bench_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/21 23:05:15 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/25 03:55:10 by tanrandr         ###   ########.fr       */
+/*   Created: 2026/03/25 03:42:00 by tanrandr          #+#    #+#             */
+/*   Updated: 2026/03/25 04:17:49 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	complexsort(t_list_stack **a, t_list_stack **b, t_list_bench *metric)
+void	do_ra(t_list_stack **a, t_list_bench *metric)
 {
-	int size = sizeofstack(*a);
-	int max_bits = 0;
-	int i = 0;
-	int j;
+	ra(a);
+	if (metric)
+		metric->ra++;
+}
 
+void	do_rb(t_list_stack **b, t_list_bench *metric)
+{
+	rb(b);
+	if (metric)
+		metric->rb++;
+}
 
-	while (((size - 1) >> max_bits) != 0)
-		max_bits++;
-	while (i < max_bits)
-	{
-		j = 0;
-		while (j < size)
-		{
-			if ((((*a)->index >> i) & 1) == 1)
-				do_ra(a, metric);
-			else
-				do_pb(a, b, metric);
-			j++;
-		}
-		while (*b)
-			do_pa(b, a, metric);
-		i++;
-	}
+void	do_rr(t_list_stack **a, t_list_stack **b, t_list_bench *metric)
+{
+	ra(a);
+	rb(b);
+	if (metric)
+		metric->rr++;
 }
