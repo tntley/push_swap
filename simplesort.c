@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 21:43:15 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/25 04:17:58 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/25 05:52:31 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void simplesort(t_list_stack **a, t_list_stack **b, t_list_bench *metric)
 	while (sizeofstack(*a) > 3)
 	{
 		min = get_min_index(*a);
-		move_to_top(a, min, metric);
+		move_to_top_a(a, min, metric);
 		do_pb(a, b, metric);
 	}
 	sort_three(a, metric);

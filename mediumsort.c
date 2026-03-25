@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 21:44:16 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/25 03:54:40 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/25 05:53:50 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	mediumsort(t_list_stack **a, t_list_stack **b, t_list_bench *metric)
 	}
 	while (*b)
 	{
-		move_to_top(b, i - 1, metric);
+		move_to_top_b(b, i - 1, metric);
 		do_pa(b, a, metric);
 		i--;
 	}

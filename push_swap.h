@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 18:23:36 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/25 03:58:04 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/25 05:54:34 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ void	complexsort(t_list_stack **a, t_list_stack **b, t_list_bench *metric);
 void	adaptivesort(t_list_stack **a, t_list_stack **b, t_list_bench *metric);
 
 int		get_min_index(t_list_stack *stack);
-void	move_to_top(t_list_stack **stack, int target_idx, t_list_bench *metric);
+void	move_to_top_a(t_list_stack **stack, int target_idx, t_list_bench *metric);
+void	move_to_top_b(t_list_stack **stack, int target_idx, t_list_bench *metric);
 void	sort_three(t_list_stack **a, t_list_bench *metric);
 
 void	print_metrics(t_list_bench *metric, int sortmode);
