@@ -47,15 +47,16 @@ int	get_min_index(t_list_stack *stack)
 
 void	sort_three(t_list_stack **a, t_list_bench *metric)
 {
-	int first = (*a)->value;
-	int second = (*a)->next->value;
-	int third = (*a)->next->next->value;
+	int first;
+	int second;
+	int third;
 
-
+	first = (*a)->value;
+	second = (*a)->next->value;
+	third = (*a)->next->next->value;
+	
 	if (first > second && second < third && first < third)
-	{
 		do_sa(a, metric);
-	}
 	else if (first > second && second > third)
 	{
 		do_sa(a, metric);
@@ -71,7 +72,5 @@ void	sort_three(t_list_stack **a, t_list_bench *metric)
 		do_ra(a, metric);
 	}
 	else if (first < second && second > third && first > third)
-	{
 		do_rra(a, metric);
-	}
 }
