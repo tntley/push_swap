@@ -14,26 +14,28 @@
 
 int main(int argc, char **argv)
 {
-	char			**temp;
+	/*char			**temp;
 	int				i;
 	char			*joint;
 	t_list_stack	*a = NULL;
 	t_list_stack	*b = NULL;
-	int				sortmode;
-	t_list_bench	*metric = NULL;
+	int				sortmode;*/
+	t_list_bench	*metric;
 	//t_list_stack	*current;
 
-	joint = "";
+	//joint = "";
 	i = 1;
+	metric = NULL;
 	if (argc < 2)
 		return (0);
 	if(check_bench(&metric, argv[i]))
 		i = 2;
-	sortmode = define_sort_mode(argv[i]);
+	parsing(argv, argc, i, metric);
+	/*sortmode = define_sort_mode(argv[i]);
 	if (sortmode != 0)
 		i++;
 	while (argv[i] && i < argc)
-		joint = ft_strjoinspace(joint, argv[i++]);
+		joint = ft_strjoinspace(joint, argv[i++]);*/
 	//printf("%s\n", joint);
 
 	temp = ft_split(joint, ' ');
@@ -61,8 +63,8 @@ int main(int argc, char **argv)
 	printf("value of new first node of stack a : %d\n", a->value);
 	printf("value of new first node of stack b : %d\n", b->value);*/
 
-	if (a)
-		run_sort(&a, &b, sortmode, metric);
+	/*if (a)
+		run_sort(&a, &b, sortmode, metric);*/
 	/*current = a;
 	while (current->next != a)
 	{
@@ -85,8 +87,8 @@ int main(int argc, char **argv)
 		printf("pa : %d\n", metric->pa);
 		printf("sa : %d\n", metric->sa);
 	}*/
-	if (metric)
-		print_metrics(metric, sortmode);
+	/*if (metric)
+		print_metrics(metric, sortmode);*/
 	return (0);
 }
 
@@ -124,3 +126,29 @@ void	define_bench(t_list_bench **metric)
 	ft_bzero(newnode, sizeof(t_list_bench));
 	*metric = newnode;
 }
+
+void		parsing(char **argv, int argc, int i, t_list_bench *metric);
+{
+	char			**temp;
+	char			*joint;
+	t_list_stack	*a;
+	t_list_stack	*b;
+	int				sortmode;
+
+	a = NULL;
+	b = NULL;
+	sortmode = define_sort_mode(argv[i]);
+	if (sortmode != 0)
+		i++;
+	while (argv[i] && i < argc)
+		joint = ft_strjoinspace(joint, argv[i++]);
+	temp = ft_split(joint, ' ');
+	manage_input(temp, &a);
+	free_temp(temp);
+	if (a)
+		run_sort(&a, &b, sortmode, metric);
+	if (metric)
+		print_metrics(metric, sortmode);
+	return (0);
+}
+
