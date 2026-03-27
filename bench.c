@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 02:39:49 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/25 04:19:06 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/26 17:06:09 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,18 @@ void	print_disorder(float disorder)
 	ft_putnbr_fd(front, 2);
 	ft_putchar_fd('.', 2);
 	ft_putnbr_fd(back, 2);
+	if (back < 10)
+		ft_putchar_fd('0', 2);
 	ft_putstr_fd("%\n", 2);
 }
 
-void	print_mode(int	sortmode, float disorder)
+void	print_mode(int sortmode, float disorder)
 {
-	ft_putstr_fd("[bench] strategy: ",2);
+	ft_putstr_fd ("[bench] strategy: ", 2);
 	if (sortmode == 1)
 		ft_putendl_fd("Simple / O(n^2)", 2);
 	else if (sortmode == 2)
-		ft_putendl_fd("Medium / O(n\u221An)", 2);
+		ft_putendl_fd("Medium / O(n * sqrt(n))", 2);
 	else if (sortmode == 3)
 		ft_putendl_fd("Complex / O(n*log(n))", 2);
 	else if (sortmode == 0 || sortmode == -1)
@@ -50,9 +52,9 @@ void	print_mode(int	sortmode, float disorder)
 		if (disorder < 0.2)
 			ft_putendl_fd("Adaptive / O(n^2)", 2);
 		if (disorder >= 0.2 && disorder < 0.5)
-			ft_putendl_fd("Adaptive / O(n\u221An)", 2);
+			ft_putendl_fd("Adaptive / O(n * sqrt (n))", 2);
 		if (disorder >= 0.5)
-			ft_putendl_fd("Adaptive / O(n*log(n))", 2);;
+			ft_putendl_fd("Adaptive / O(n*log(n))", 2);
 	}
 }
 
@@ -61,8 +63,9 @@ void	print_total_ops(t_list_bench *metric)
 	int	total;
 
 	ft_putstr_fd("[bench] total_ops: ", 2);
-	total = metric->sa + metric->sb + metric->ss + metric->pa + metric->pb + metric->ra +
-		metric->rb + metric->rr + metric->rra + metric->rrb + metric->rrr;
+	total = metric->sa + metric->sb
+		+ metric->ss + metric->pa + metric->pb + metric->ra
+		+ metric->rb + metric->rr + metric->rra + metric->rrb + metric->rrr;
 	ft_putnbr_fd(total, 2);
 	ft_putchar_fd('\n', 2);
 }
@@ -94,4 +97,3 @@ void	print_ops(t_list_bench *metric)
 	ft_putnbr_fd(metric->rrr, 2);
 	ft_putchar_fd('\n', 2);
 }
-

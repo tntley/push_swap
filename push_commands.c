@@ -6,46 +6,48 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 22:29:15 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/22 10:20:26 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/26 16:24:14 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_list_stack **src, t_list_stack **dest)
+t_list_stack	*pop_node(t_list_stack **src)
 {
 	t_list_stack	*head;
-	t_list_stack	*second;
-	t_list_stack	*lastsrc;
-	t_list_stack	*lastdest;
 
-	if (!(*src))
-		return;
 	head = *src;
 	if (head->next == head)
 		*src = NULL;
 	else
 	{
-		second = head->next;
-		lastsrc = head->prev;
-		*src = second;
-		second->prev = lastsrc;
-		lastsrc->next = second;
+		*src = head->next;
+		(*src)->prev = head->prev;
+		head->prev->next = *src;
 	}
-	if (!(*dest))
+	return (head);
+}
+
+void	push(t_list_stack **src, t_list_stack **dest)
+{
+	t_list_stack	*head;
+
+	if (!src || !*src)
+		return ;
+	head = pop_node(src);
+	if (!*dest)
 	{
-		(*dest) = head;
+		*dest = head;
 		head->next = head;
 		head->prev = head;
 	}
 	else
 	{
-		lastdest = (*dest)->prev;
-		lastdest->next = head;
-		head->prev = lastdest;
-		head->next = (*dest);
+		head->prev = (*dest)->prev;
+		head->next = *dest;
+		(*dest)->prev->next = head;
 		(*dest)->prev = head;
-		(*dest) = head;
+		*dest = head;
 	}
 }
 

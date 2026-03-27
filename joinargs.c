@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_commands.c                                  :+:      :+:    :+:   */
+/*   joinargs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/14 05:02:36 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/26 16:43:15 by tanrandr         ###   ########.fr       */
+/*   Created: 2026/01/27 10:27:23 by tanrandr          #+#    #+#             */
+/*   Updated: 2026/03/27 00:35:36 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate(t_list_stack **stack)
+char	*ft_strjoinspace(const char *s1, const char *s2)
 {
-	t_list_stack	*head;
+	char	*result;
+	int		i;
+	int		j;
+	int		len;
 
-	if (!(*stack) || (*stack)->next == (*stack))
-		return ;
-	head = *stack;
-	*stack = head->next;
-}
-
-void	ra(t_list_stack **a)
-{
-	rotate(a);
-	write(1, "ra\n", 3);
-}
-
-void	rb(t_list_stack **b)
-{
-	rotate(b);
-	write(1, "rb\n", 3);
-}
-
-void	rr(t_list_stack **a, t_list_stack **b)
-{
-	rotate(a);
-	rotate(b);
-	write(1, "rr\n", 3);
+	len = ft_strlen(s1) + ft_strlen(s2);
+	result = malloc (sizeof(char) * (len + 2));
+	if (!result)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s1[i] != '\0')
+		result[j++] = s1[i++];
+	result[j++] = ' ';
+	i = 0;
+	while (s2[i] != '\0')
+		result[j++] = s2[i++];
+	result[j] = '\0';
+	return (result);
 }

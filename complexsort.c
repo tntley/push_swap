@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complexsort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
+/*   By: aleandri <aleandri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 23:05:15 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/25 03:55:10 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/25 10:11:50 by aleandri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 void	complexsort(t_list_stack **a, t_list_stack **b, t_list_bench *metric)
 {
-	int size = sizeofstack(*a);
-	int max_bits = 0;
-	int i = 0;
-	int j;
+	int	size;
+	int	max_bits;
+	int	i;
+	int	j;
 
-
+	i = 0;
+	max_bits = 0;
+	size = sizeofstack(*a);
 	while (((size - 1) >> max_bits) != 0)
 		max_bits++;
 	while (i < max_bits)

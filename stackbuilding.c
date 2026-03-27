@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 21:39:43 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/21 22:09:53 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/27 08:03:14 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,24 @@ void	build_stack(t_list_stack **a, int nb)
 
 void	define_indexes(t_list_stack *a)
 {
-	int				i;
-	int				j;
-	t_list_stack	*fix;
-	t_list_stack	*compareto;
-	int				inferior;
-	int				stacksize;
+	int	stacksize;
 
+	if (!a)
+		return ;
 	stacksize = sizeofstack(a);
-	fix = a;
+	find_index(a, stacksize);
+}
+
+void	find_index(t_list_stack *a, int stacksize)
+{
+	int				i;
+	int				inferior;
+	int				j;
+	t_list_stack	*compareto;
+	t_list_stack	*fix;
+
 	i = 0;
+	fix = a;
 	while (i < stacksize)
 	{
 		j = 0;
@@ -93,7 +101,7 @@ void	freestack(t_list_stack **stack)
 	t_list_stack	*following;
 
 	if (!stack || !(*stack))
-		return;
+		return ;
 	head = *stack;
 	hold = head->next;
 	while (hold != head)

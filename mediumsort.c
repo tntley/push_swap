@@ -6,18 +6,32 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 21:44:16 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/25 05:53:50 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/26 21:20:26 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	push_back_to_a(t_list_stack **a, t_list_stack **b,
+		t_list_bench *metric, int i)
+{
+	while (*b)
+	{
+		move_to_top_b(b, i - 1, metric);
+		do_pa(b, a, metric);
+		i--;
+	}
+}
+
 void	mediumsort(t_list_stack **a, t_list_stack **b, t_list_bench *metric)
 {
-	int	size = sizeofstack(*a);
-	int	chunk_size = ft_sqrt(size);
-	int	i = 0;
+	int	size;
+	int	chunk_size;
+	int	i;
 
+	size = sizeofstack(*a);
+	chunk_size = ft_sqrt(size);
+	i = 0;
 	while (*a)
 	{
 		if ((*a)->index <= i)
@@ -34,12 +48,7 @@ void	mediumsort(t_list_stack **a, t_list_stack **b, t_list_bench *metric)
 		else
 			do_ra(a, metric);
 	}
-	while (*b)
-	{
-		move_to_top_b(b, i - 1, metric);
-		do_pa(b, a, metric);
-		i--;
-	}
+	push_back_to_a(a, b, metric, i);
 }
 
 int	ft_sqrt(int nb)

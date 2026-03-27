@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverserotate_commands.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
+/*   By: aleandri <aleandri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 22:19:29 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/14 22:24:38 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/25 10:53:19 by aleandri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	reverserotate(t_list_stack **stack)
 {
 	if (!(*stack) || (*stack)->next == (*stack))
-		return;
+		return ;
 	(*stack) = (*stack)->prev;
 }
 

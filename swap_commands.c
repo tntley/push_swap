@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap_commands.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
+/*   By: aleandri <aleandri@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 05:22:15 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/14 22:18:51 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/25 10:55:03 by aleandri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	swap(t_list_stack **stack)
 	t_list_stack	*last;
 
 	if (!(*stack) || (*stack)->next == (*stack))
-		return;
+		return ;
 	head = *stack;
 	second = head->next;
 	if (second->next == head)
 	{
 		(*stack) = second;
-		return;
+		return ;
 	}
 	last = head->prev;
 	third = second->next;

@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:14:13 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/25 03:40:52 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/27 00:50:15 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,19 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return ((unsigned char) s1[i] - (unsigned char) s2[i]);
 }
 
-void	run_sort(t_list_stack **a, t_list_stack **b, int sortmode, t_list_bench *metric)
+void	actual_sort(t_list_stack **a, t_list_bench *metric, int sortmode)
+{
+	t_list_stack	*b;
+
+	b = NULL;
+	if (a)
+		run_sort(a, &b, sortmode, metric);
+	if (metric && a)
+		print_metrics(metric, sortmode);
+}
+
+void	run_sort(t_list_stack **a, t_list_stack **b, int sortmode,
+			t_list_bench *metric)
 {
 	if (metric)
 		metric->disorder = compute_disorder(*a);

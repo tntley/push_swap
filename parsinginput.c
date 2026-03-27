@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 21:38:11 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/24 19:00:17 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/27 07:52:56 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	manage_input(char **temp, t_list_stack **a)
 		build_stack(a, (int)prestack);
 		i++;
 	}
-	define_indexes(*a);
 }
 
 int	run_isdigit(char *temp)
@@ -50,7 +49,7 @@ int	run_isdigit(char *temp)
 	while (temp[j])
 	{
 		j = 0;
-		if(temp[j] == '-' || temp[j] == '+')
+		if (temp[j] == '-' || temp[j] == '+')
 		{
 			j++;
 			if (!temp[j])
@@ -111,5 +110,6 @@ int	is_duplicate(t_list_stack *a, int nb)
 void	error_and_free(t_list_stack **a)
 {
 	ft_putendl_fd("Error", 2);
-	freestack(a);
+	if (*a)
+		freestack(a);
 }

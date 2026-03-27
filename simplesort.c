@@ -6,16 +6,24 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 21:43:15 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/25 05:52:31 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/27 09:12:22 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void simplesort(t_list_stack **a, t_list_stack **b, t_list_bench *metric)
+void	simplesort(t_list_stack **a, t_list_stack **b, t_list_bench *metric)
 {
-	int min;
+	int	min;
 
+	if (sizeofstack(*a) == 1)
+		return ;
+	if (sizeofstack(*a) == 2)
+	{
+		if (compute_disorder(*a))
+			do_sa(a, metric);
+		return ;
+	}
 	while (sizeofstack(*a) > 3)
 	{
 		min = get_min_index(*a);
@@ -24,14 +32,12 @@ void simplesort(t_list_stack **a, t_list_stack **b, t_list_bench *metric)
 	}
 	sort_three(a, metric);
 	while (*b)
-	{
 		do_pa(b, a, metric);
-	}
 }
 
 int	get_min_index(t_list_stack *stack)
 {
-	int	min ;
+	int				min ;
 	t_list_stack	*tmp;
 
 	min = stack->index;
@@ -42,30 +48,29 @@ int	get_min_index(t_list_stack *stack)
 			min = tmp->index;
 		tmp = tmp->next;
 	}
-	return min;
+	return (min);
 }
 
 void	sort_three(t_list_stack **a, t_list_bench *metric)
 {
-	int first;
-	int second;
-	int third;
+	int	first;
+	int	second;
+	int	third;
 
 	first = (*a)->value;
 	second = (*a)->next->value;
 	third = (*a)->next->next->value;
-	
 	if (first > second && second < third && first < third)
+	{
 		do_sa(a, metric);
+	}
 	else if (first > second && second > third)
 	{
 		do_sa(a, metric);
 		do_rra(a, metric);
 	}
 	else if (first > second && second < third && first > third)
-	{
 		do_ra(a, metric);
-	}
 	else if (first < second && second > third && first < third)
 	{
 		do_sa(a, metric);
