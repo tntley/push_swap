@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 00:27:18 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/25 00:58:19 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/31 18:07:42 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,62 @@ void	define_bench(t_list_bench **metric)
 		return;
 	ft_bzero(newnode, sizeof(t_list_bench));
 	*metric = newnode;
+}
+
+
+
+int main(int argc, char **argv)
+{
+	t_list_flag		*flag;
+	//t_list_bench	*metric;
+	int				i;
+	char			*joint;
+	char			*hold;
+	char			**temp;
+	t_list_stack	*a;
+
+	i = 1;
+	//metric = NULL;
+	flag = NULL;
+	a = NULL;
+	joint = ft_strdup("");
+	if (argc < 2)
+		return (0);
+	define_flag_struct(&flag);
+	check_flags(argv, &argc, flag);
+	i = 1;
+	while (argv[i])
+	{
+		hold = joint;
+		joint = ft_strjoinspace(hold, argv[i++]);
+		free(hold);
+	}
+	printf("numbers : %s\n", joint);
+	printf("bench : %d, mode : %d\n", flag->bench, flag->mode);
+	printf("final arg number : %d\n", argc);
+	temp = ft_split(joint, ' ');
+	i = 0;
+	while (temp[i])
+	{
+		printf("%s\n", temp[i]);
+		i++;
+	}
+	manage_input(temp, &a, flag);
+
+	i = 0;
+	while (temp[i])
+	{
+		printf("%s\n", temp[i]);
+		i++;
+	}
+
+	if (a)
+	{
+		define_indexes(a);
+		actual_sort(&a, flag);
+		free_everything(&a, joint, temp);
+	}
+
+	printf("bench : %d, mode : %d\n", flag->bench, flag->mode);
+	return (0);
 }

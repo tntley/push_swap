@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 19:23:06 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/27 08:48:14 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/31 17:41:28 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	define_bench(t_list_bench **metric)
 	*metric = newnode;
 }
 
-void	free_everything(t_list_stack **a, t_list_bench **metric, char *joint,
+void	free_everything(t_list_stack **a, char *joint,
 			char **temp)
 {
 	int	i;
@@ -94,6 +94,6 @@ void	free_everything(t_list_stack **a, t_list_bench **metric, char *joint,
 	}
 	free(temp);
 	free(joint);
-	free(*metric);
-	*metric = NULL;
+	/*free(*metric);
+	*metric = NULL;*/
 }

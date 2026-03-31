@@ -4,19 +4,19 @@
 int main(int argc, char **argv)
 {
 	t_list_flag		*flag;
-	//t_list_bench	*metric;
 	int				i;
 	char			*joint;
 	char			*hold;
 	char			**temp;
-	//t_list_stack	*a;
+	t_list_stack	*a;
 
-	i = 1;
-	//metric = NULL;
-	flag = NULL;
-	joint = ft_strdup("");
 	if (argc < 2)
 		return (0);
+	i = 1;
+	flag = NULL;
+	a = NULL;
+	joint = ft_strdup("");
+
 	define_flag_struct(&flag);
 	check_flags(argv, &argc, flag);
 	i = 1;
@@ -26,17 +26,15 @@ int main(int argc, char **argv)
 		joint = ft_strjoinspace(hold, argv[i++]);
 		free(hold);
 	}
-	printf("numbers : %s\n", joint);
-	printf("bench : %d, mode : %d\n", flag->bench, flag->mode);
-	printf("final arg number : %d\n", argc);
 	temp = ft_split(joint, ' ');
-	check_flags(temp, &argc, flag);
-	i = 0;
-	while (temp[i])
+	manage_input(temp, &a, flag, joint);
+	if (a)
 	{
-		printf("%s\n", temp[i]);
-		i++;
+		define_indexes(a);
+		actual_sort(&a, flag);
+		free_everything(&a, joint, temp, &flag);
 	}
+	return (0);
 }
 
 void	define_flag_struct(t_list_flag **flag)
@@ -65,7 +63,7 @@ void	remove_flag(int *argc, char *argv)
 
 void	check_flags(char **argv, int *argc, t_list_flag *flag)
 {
-	int	i;
+	int				i;
 
 	i = 1;
 	while (argv[i])
@@ -75,32 +73,26 @@ void	check_flags(char **argv, int *argc, t_list_flag *flag)
 			remove_flag(argc, argv[i]);
 			flag->bench = 1;
 		}
-		else if ((!ft_strcmp(argv[i], "--simple") || !ft_strcmp(argv[i], "\"--simple\"")) && !(flag->bench))
+		else if ((!ft_strcmp(argv[i], "--simple") || !ft_strcmp(argv[i], "\"--simple\"")) && !(flag->mode))
 		{
 			remove_flag(argc, argv[i]);
 			flag->mode = 1;
 		}
-		else if ((!ft_strcmp(argv[i], "--medium") || !ft_strcmp(argv[i], "\"--medium\"")) && !(flag->bench))
+		else if ((!ft_strcmp(argv[i], "--medium") || !ft_strcmp(argv[i], "\"--medium\"")) && !(flag->mode))
 		{
 			remove_flag(argc, argv[i]);
 			flag->mode = 2;
 		}
-		else if ((!ft_strcmp(argv[i], "--complex") || !ft_strcmp(argv[i], "\"--complex\"")) && !(flag->bench))
+		else if ((!ft_strcmp(argv[i], "--complex") || !ft_strcmp(argv[i], "\"--complex\"")) && !(flag->mode))
 		{
 			remove_flag(argc, argv[i]);
 			flag->mode = 3;
 		}
-		else if ((!ft_strcmp(argv[i], "--adaptive") || !ft_strcmp(argv[i], "\"--adaptive\"")) && !(flag->bench))
+		else if ((!ft_strcmp(argv[i], "--adaptive") || !ft_strcmp(argv[i], "\"--adaptive\"")) && !(flag->mode))
 		{
 			remove_flag(argc, argv[i]);
 			flag->mode = -1;
 		}
-		/*else
-		{
-			hold = joint;
-			joint = ft_strjoinspace(hold, argv[i]);
-			free(hold);
-		}*/
 		i++;
 	}
 }

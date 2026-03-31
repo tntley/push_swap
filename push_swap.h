@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 18:23:36 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/31 12:52:27 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/31 18:32:10 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,16 @@ typedef struct	s_list_flag
 void			define_flag_struct(t_list_flag **flag);
 void			remove_flag(int *argc, char *argv);
 void			check_flags(char **argv, int *argc, t_list_flag *flag);
+void	check_flags_split(char **temp, t_list_flag *flag);
+void	remove_flag_split(char **temp, int i);
+
 
 
 int				check_bench(t_list_bench **metric, char *argv);
 void			define_bench(t_list_bench **metric);
 
 void			parsing(char **argv, int argc, int i, t_list_bench *metric);
-void			manage_input(char **temp, t_list_stack **a);
+void			manage_input(char **temp, t_list_stack **a, t_list_flag *flag, char *joint);
 void			run_sort(t_list_stack **a, t_list_stack **b, int sortmode,
 					t_list_bench *metric);
 int				run_isdigit(char *temp);
@@ -71,13 +74,15 @@ char			*ft_strjoinspace(const char *s1, const char *s2);
 int				define_sort_mode(char *flag);
 int				ft_strcmp(const char *s1, const char *s2);
 
-void			actual_sort(t_list_stack **a, t_list_bench *metric,
-					int sortmode);
-void			error_and_free(t_list_stack **a);
+/*void			actual_sort(t_list_stack **a, t_list_bench *metric,
+					int sortmode);*/
+void			actual_sort(t_list_stack **a, t_list_flag *flag);
+void			error_and_free(t_list_stack **a, char *joint,
+					char **temp, t_list_flag **flag);
 void			freestack(t_list_stack **stack);
 int				ft_sqrt(int nb);
-void			free_everything(t_list_stack **a, t_list_bench **metric,
-					char *joint, char **temp);
+void			free_everything(t_list_stack **a, /*t_list_bench **metric,*/
+					char *joint, char **temp, t_list_flag **flag);
 
 void			simplesort(t_list_stack **a, t_list_stack **b,
 					t_list_bench *metric);
