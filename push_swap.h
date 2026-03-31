@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 18:23:36 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/31 23:35:55 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/31 23:52:25 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "./libft/libft.h"
-# include <stdio.h>
 # include <limits.h>
 
 typedef struct s_list_stack
