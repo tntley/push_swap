@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 18:23:36 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/27 10:09:50 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/03/31 12:52:27 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ typedef struct	s_list_flag
 	int	mode;
 }				t_list_flag;
 
-void	define_flag_struct(t_list_flag **flag);
+void			define_flag_struct(t_list_flag **flag);
+void			remove_flag(int *argc, char *argv);
+void			check_flags(char **argv, int *argc, t_list_flag *flag);
+
 
 int				check_bench(t_list_bench **metric, char *argv);
 void			define_bench(t_list_bench **metric);
