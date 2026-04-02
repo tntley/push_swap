@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:14:13 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/31 23:35:47 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/04/02 17:03:12 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,18 @@ void	actual_sort(t_list_stack **a, t_list_flag *flag)
 	t_list_bench	*metric;
 
 	b = NULL;
-	define_bench(&metric);
+	metric = NULL;
+	if (flag->bench)
+		define_bench(&metric);
 	if (a)
 		run_sort(a, &b, flag->mode, metric);
 	if (metric && a)
 		print_metrics(metric, flag->mode);
-	free(metric);
-	metric = NULL;
+	if (metric)
+	{
+		free(metric);
+		metric = NULL;
+	}
 }
 
 void	run_sort(t_list_stack **a, t_list_stack **b, int sortmode,
