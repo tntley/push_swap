@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 11:14:13 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/04/02 17:03:12 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/04/03 16:10:54 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,17 @@ void	run_sort(t_list_stack **a, t_list_stack **b, int sortmode,
 	if (sortmode == 1)
 		simplesort(a, b, metric);
 	else if (sortmode == 2)
+	{
+		if (sizeofstack(*a) == 1 || !compute_disorder(*a))
+			return ;
 		mediumsort(a, b, metric);
+	}
 	else if (sortmode == 3)
+	{
+		if (sizeofstack(*a) == 1 || !compute_disorder(*a))
+			return ;
 		complexsort(a, b, metric);
+	}
 	else
 		adaptivesort(a, b, metric);
 }

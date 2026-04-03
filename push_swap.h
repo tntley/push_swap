@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 18:23:36 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/31 23:52:25 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/04/03 16:58:26 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void			check_flags_split_b(char **temp, t_list_flag *flag, int i,
 					int *removed);
 void			remove_flag_split(char **temp, int i);
 
-int				check_bench(t_list_bench **metric, char *argv);
+int				check_pre_split(char *arg);
+
 void			define_bench(t_list_bench **metric);
 
 void			parsing(char **argv, t_list_flag *flag, char *joint);
@@ -72,7 +73,6 @@ void			find_index(t_list_stack *a, int stacksize);
 int				sizeofstack(t_list_stack *a);
 float			compute_disorder(t_list_stack *a);
 char			*ft_strjoinspace(const char *s1, const char *s2);
-//int				define_sort_mode(char *flag);
 int				ft_strcmp(const char *s1, const char *s2);
 
 void			actual_sort(t_list_stack **a, t_list_flag *flag);

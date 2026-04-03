@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 21:43:15 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/04/02 17:20:59 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/04/03 12:25:06 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	simplesort(t_list_stack **a, t_list_stack **b, t_list_bench *metric)
 {
 	int	min;
 
-	if (sizeofstack(*a) == 1)
+	if (sizeofstack(*a) == 1 || !compute_disorder(*a))
 		return ;
 	if (sizeofstack(*a) == 2)
 	{

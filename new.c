@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 22:22:14 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/31 23:51:18 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/04/03 16:55:29 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,14 @@ void	parsing(char **argv, t_list_flag *flag, char *joint)
 	a = NULL;
 	while (argv[i])
 	{
+		/*if (check_pre_split(argv[i]))
+		{
+			ft_putendl_fd("Error", 2);
+			free(joint);
+			free(flag);
+			flag = NULL;
+			return ;
+		}*/
 		hold = joint;
 		joint = ft_strjoinspace(hold, argv[i++]);
 		free(hold);
@@ -61,4 +69,20 @@ void	parsing(char **argv, t_list_flag *flag, char *joint)
 		actual_sort(&a, flag);
 	}
 	free_everything(&a, joint, temp, &flag);
+}
+
+int	check_pre_split(char *arg)
+{
+	int	i;
+
+	i = 0;
+	if (arg[i] == '\0')
+		return (1);
+	while (arg[i])
+	{
+		if (arg[i] != ' ')
+			return (0);
+		i++;
+	}
+	return (1);
 }

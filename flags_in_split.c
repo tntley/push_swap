@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 22:40:36 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/31 22:54:10 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/04/03 16:59:40 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,8 @@ void	check_flags_split(char **temp, t_list_flag *flag)
 			flag->mode = 1;
 			removed = 1;
 		}
-		check_flags_split_b(temp, flag, i, &removed);
 		if (!removed)
-			i++;
+			check_flags_split_b(temp, flag, i++, &removed);
 	}
 }
 

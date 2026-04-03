@@ -6,7 +6,7 @@
 /*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 12:58:10 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/27 02:48:24 by tanrandr         ###   ########.fr       */
+/*   Updated: 2026/04/03 14:05:56 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	adaptivesort(t_list_stack **a, t_list_stack **b, t_list_bench *metric)
 
 	size = sizeofstack(*a);
 	disorder = compute_disorder(*a);
+	if (size == 1 || !disorder)
+		return ;
 	if (disorder < 0.2 || size <= 10)
 		simplesort(a, b, metric);
 	else if ((disorder >= 0.2 && disorder < 0.5) || (size > 10 && size <= 100))

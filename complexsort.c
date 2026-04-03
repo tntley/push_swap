@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complexsort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleandri <aleandri@student.42antananari    +#+  +:+       +#+        */
+/*   By: tanrandr <tanrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 23:05:15 by tanrandr          #+#    #+#             */
-/*   Updated: 2026/03/25 10:11:50 by aleandri         ###   ########.fr       */
+/*   Updated: 2026/04/03 14:06:03 by tanrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
