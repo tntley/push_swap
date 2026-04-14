@@ -56,7 +56,9 @@ on a intégré un module de métriques (bench.c) pour analyser l'efficacité de 
 
 - Le total des opérations final.
 
-### Installation et UtilisationCompilation
+### Installation et Utilisation
+
+#### Compilation
 
 Le projet se compile avec le Makefile fourni :
 ```
@@ -68,11 +70,11 @@ make clean  # Supprime les fichiers objets
 ```
 make fclean # Supprime les objets et l'exécutable
 ```
-### Exécution Pour trier une liste de nombres :
+#### Exécution Pour trier une liste de nombres :
 ```
 ./push_swap 2 1 3 6 5 8
 ```
-### Pour vérifier le nombre de lignes avec le testeur officiel (si disponible) :
+#### Pour vérifier le nombre de lignes avec le testeur officiel (si disponible) :
 ```
 ARG="4 67 3 1 23"; ./push_swap $ARG | wc -l
 ```
